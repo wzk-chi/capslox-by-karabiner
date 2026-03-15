@@ -24,3 +24,5 @@
 优化capslock的逻辑，不再使用cmd+shift+option作为capslock的功能，防止快捷键冲突
 
 添加了 capslock+\` 打开浏览器
+
+添加 capslock+space => enter，capslock+enter => 换行
