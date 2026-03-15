@@ -1,0 +1,914 @@
+{
+  "title": "My Capslox Hyper Rules",
+  "rules": [
+    {
+      "description": "CapsLock as Hyper",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "caps_hyper_active",
+                "value": 1
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "caps_hyper_active",
+                "value": 0
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "caps_lock"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Hyper (caps_hyper_active) => 光标移动",
+      "manipulators": [
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "e" },
+          "to": [{ "key_code": "up_arrow" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "d" },
+          "to": [{ "key_code": "down_arrow" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "s" },
+          "to": [{ "key_code": "left_arrow" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "f" },
+          "to": [{ "key_code": "right_arrow" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "a" },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_option"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "g" },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_option"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "return_or_enter" },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_command"]
+            },
+            {
+              "key_code": "return_or_enter"
+            }
+          ]
+        },
+
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Terminal$",
+                "^com\\.googlecode\\.iterm2$",
+                "^com\\.jetbrains\\.(.*)$"
+              ]
+            }
+          ],
+          "from": { "key_code": "p" },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_command"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Terminal$",
+                "^com\\.googlecode\\.iterm2$",
+                "^com\\.jetbrains\\.(.*)$"
+              ]
+            }
+          ],
+          "from": { "key_code": "semicolon" },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_command"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Terminal$",
+                "^com\\.googlecode\\.iterm2$",
+                "^com\\.jetbrains\\.(.*)$"
+              ]
+            }
+          ],
+          "from": { "key_code": "p" },
+          "to": [
+            {
+              "key_code": "a",
+              "modifiers": ["left_control"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Terminal$",
+                "^com\\.googlecode\\.iterm2$",
+                "^com\\.jetbrains\\.(.*)$"
+              ]
+            }
+          ],
+          "from": { "key_code": "semicolon" },
+          "to": [
+            {
+              "key_code": "e",
+              "modifiers": ["left_control"]
+            }
+          ]
+        },
+
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^app\\.cyan\\.taio$",
+                "^com\\.agiletortoise\\.Drafts-OSX$"
+              ]
+            }
+          ],
+          "from": { "key_code": "p", "modifiers": { "mandatory": ["left_command"] } },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_command", "fn"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^app\\.cyan\\.taio$",
+                "^com\\.agiletortoise\\.Drafts-OSX$"
+              ]
+            }
+          ],
+          "from": { "key_code": "semicolon", "modifiers": { "mandatory": ["left_command"] } },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_command", "fn"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^app\\.cyan\\.taio$",
+                "^com\\.agiletortoise\\.Drafts-OSX$"
+              ]
+            }
+          ],
+          "from": { "key_code": "p", "modifiers": { "mandatory": ["left_command"] } },
+          "to": [
+            {
+              "key_code": "up_arrow",
+              "modifiers": ["left_command"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^app\\.cyan\\.taio$",
+                "^com\\.agiletortoise\\.Drafts-OSX$"
+              ]
+            }
+          ],
+          "from": { "key_code": "semicolon", "modifiers": { "mandatory": ["left_command"] } },
+          "to": [
+            {
+              "key_code": "down_arrow",
+              "modifiers": ["left_command"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Hyper (caps_hyper_active) => 文本删除",
+      "manipulators": [
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "w" },
+          "to": [{ "key_code": "delete_or_backspace" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "r" },
+          "to": [{ "key_code": "delete_forward" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": {
+            "key_code": "w",
+            "modifiers": { "mandatory": ["left_command"] }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace",
+              "modifiers": ["left_option"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": {
+            "key_code": "r",
+            "modifiers": { "mandatory": ["left_command"] }
+          },
+          "to": [
+            {
+              "key_code": "delete_forward",
+              "modifiers": ["left_option"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "open_bracket" },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_command", "left_shift"]
+            },
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "slash" },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_command", "left_shift"]
+            },
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ]
+        },
+
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^app\\.cyan\\.taio$",
+                "^com\\.agiletortoise\\.Drafts-OSX$"
+              ]
+            }
+          ],
+          "from": { "key_code": "delete_or_backspace" },
+          "to": [
+            {
+              "key_code": "delete_or_backspace",
+              "modifiers": ["left_command"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^app\\.cyan\\.taio$",
+                "^com\\.agiletortoise\\.Drafts-OSX$"
+              ]
+            }
+          ],
+          "from": { "key_code": "delete_or_backspace" },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_command"]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_command", "left_shift"]
+            },
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": {
+            "key_code": "delete_or_backspace",
+            "modifiers": { "mandatory": ["left_command"] }
+          },
+          "to": [
+            {
+              "key_code": "a",
+              "modifiers": ["left_command"]
+            },
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Hyper (caps_hyper_active) => 光标选中 (all applications)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "i" },
+          "to": [
+            {
+              "key_code": "up_arrow",
+              "modifiers": ["left_shift"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "k" },
+          "to": [
+            {
+              "key_code": "down_arrow",
+              "modifiers": ["left_shift"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "j" },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_shift"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "l" },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_shift"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "h" },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_option", "left_shift"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "n" },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_option", "left_shift"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "y" },
+          "to": [
+            {
+              "key_code": "up_arrow",
+              "modifiers": ["left_option"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "b" },
+          "to": [
+            {
+              "key_code": "down_arrow",
+              "modifiers": ["left_option"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "u" },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_shift", "fn"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "o" },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_shift", "fn"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "comma" },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_option"]
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_option", "left_shift"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": {
+            "key_code": "r",
+            "modifiers": { "mandatory": ["left_option"] }
+          },
+          "to": [
+            {
+              "key_code": "f6",
+              "modifiers": ["left_shift"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Hyper (caps_hyper_active) => F1~F12, Hyper+` 打开 Google Chrome",
+      "manipulators": [
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "grave_accent_and_tilde" },
+          "to": [
+            {
+              "shell_command": "open -a 'Google Chrome'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "1" },
+          "to": [{ "key_code": "f1" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "2" },
+          "to": [{ "key_code": "f2" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "3" },
+          "to": [{ "key_code": "f3" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "4" },
+          "to": [{ "key_code": "f4" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "5" },
+          "to": [{ "key_code": "f5" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "6" },
+          "to": [{ "key_code": "f6" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "7" },
+          "to": [{ "key_code": "f7" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "8" },
+          "to": [{ "key_code": "f8" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "9" },
+          "to": [{ "key_code": "f9" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "0" },
+          "to": [{ "key_code": "f10" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "hyphen" },
+          "to": [{ "key_code": "f11" }]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_hyper_active",
+              "value": 1
+            }
+          ],
+          "from": { "key_code": "equal_sign" },
+          "to": [{ "key_code": "f12" }]
+        }
+      ]
+    }
+  ]
+}
