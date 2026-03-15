@@ -6,15 +6,18 @@
 
 ## 使用方法
 
-1. 下载 [Karabiner-Elements](https://karabiner-elements.pqrs.org/) 并安装好
+1. 下载 [Karabiner-Elements](https://karabiner-elements.pqrs.org/) 并安装好，给予权限
 2. 在默认浏览中输入下面网址，并回车
 
    ```
    karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/wzk-chi/capslox-by-karabiner/main/capslox-by-karabiner.json
    ```
 3. 跳转至Karabiner-Elements并导入
-4. 选择enable ALL
 
+   ![1773559658003](image/README/1773559658003.png)
+4. 选择Enable All
+
+![1773559677030](image/README/1773559677030.png)
 
 ## 主要修改
 
