@@ -1,0 +1,2 @@
+# capslox-by-karabiner
+使用karabiner实现capslox的大部分capslock快捷键功能
